@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
-import { ArrowRight, Sparkles, ShieldCheck, Star, Play, Users, Calendar } from "lucide-react";
+import { Sparkles, Star, Users, Heart, Shield, Clock, Music, Wind, PenTool, Brain, MessageSquare } from "lucide-react";
 
 const FloatingCard = ({ children, className, delay = 0 }: { children: React.ReactNode, className: string, delay?: number }) => (
     <motion.div
@@ -31,27 +31,24 @@ const HeroSection = () => {
     const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.98]);
 
     const scaleReveal: Variants = {
-        hidden: { scale: 1.5, opacity: 0, y: 20 },
+        hidden: { opacity: 0 },
         visible: (i: number) => ({
-            scale: 1,
             opacity: 1,
-            y: 0,
             transition: {
-                duration: 1.0,
-                delay: 0.2 + i * 0.22,
-                ease: [0.22, 1, 0.36, 1],
+                duration: 0.8,
+                delay: 0.1 + i * 0.15,
+                ease: "easeOut",
             },
         }),
     };
 
     const slowFade: Variants = {
-        hidden: { opacity: 0, y: 15 },
+        hidden: { opacity: 0 },
         visible: (i: number) => ({
             opacity: 1,
-            y: 0,
             transition: {
-                duration: 0.8,
-                delay: 0.8 + i * 0.1,
+                duration: 0.6,
+                delay: 0.4 + i * 0.1,
                 ease: "easeOut",
             },
         }),
@@ -88,7 +85,6 @@ const HeroSection = () => {
                 <div className="max-w-5xl mx-auto mb-16">
                     <h1 className="text-7xl md:text-[9.5rem] font-black tracking-[-0.05em] leading-[0.85] text-[#1a0a2a] mb-10 overflow-hidden">
                         <motion.span
-                            display="block"
                             variants={scaleReveal}
                             initial="hidden"
                             animate="visible"
@@ -124,46 +120,47 @@ const HeroSection = () => {
                     </motion.div>
                 </div>
 
-                {/* Action Button Section */}
-                <motion.div
-                    variants={slowFade}
-                    initial="hidden"
-                    animate="visible"
-                    custom={2}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-8"
-                >
-                    <button className="group relative px-10 py-5 bg-[#1a0a2a] text-white rounded-2xl overflow-hidden shadow-2xl shadow-purple-200/50 transition-all duration-500 hover:-translate-y-1">
-                        <span className="relative z-10 text-xs font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3">
-                            Start Journey Now
-                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                        </span>
-                        <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                    </button>
 
-                    <button className="px-10 py-5 bg-white/50 border border-slate-200 text-[#1a0a2a] rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:border-purple-200 hover:bg-white transition-all duration-300 flex items-center justify-center gap-3">
-                        <Play size={18} fill="#1a0a2a" />
-                        Watch Demo
-                    </button>
-                </motion.div>
 
-                {/* Floating ID Cards (Reduced Messiness) */}
-                <FloatingCard className="top-0 left-[-120px] -rotate-3" delay={1}>
+
+                {/* Floating Cards (Positioned to avoid overlap with central text) */}
+                <FloatingCard className="top-[8%] left-[-4%] -rotate-3" delay={1.0}>
                     <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600">
                         <Users size={20} />
                     </div>
                     <div className="text-left">
-                        <p className="text-[9px] font-black uppercase tracking-widest text-slate-400 leading-none mb-1">Expert Network</p>
-                        <p className="text-base font-black text-[#1a0a2a]">50+ Specialists</p>
+                        <p className="text-[9px] font-black uppercase tracking-widest text-slate-400 leading-none mb-1">Wellness Hub</p>
+                        <p className="text-base font-black text-[#1a0a2a]">50+ Experts</p>
                     </div>
                 </FloatingCard>
 
-                <FloatingCard className="bottom-[10%] right-[-100px] rotate-3" delay={1.4}>
-                    <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-500">
-                        <Star size={20} fill="currentColor" />
+                <FloatingCard className="bottom-[25%] left-[-2%] rotate-2" delay={1.4}>
+                    <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">
+                        <MessageSquare size={20} />
                     </div>
                     <div className="text-left">
-                        <p className="text-[9px] font-black uppercase tracking-widest text-slate-400 leading-none mb-1">Satisfaction</p>
-                        <p className="text-base font-black text-[#1a0a2a]">4.9/5 Rating</p>
+                        <p className="text-[9px] font-black uppercase tracking-widest text-slate-400 leading-none mb-1">AI Assistant</p>
+                        <p className="text-base font-black text-[#1a0a2a]">24/7 Support</p>
+                    </div>
+                </FloatingCard>
+
+                <FloatingCard className="top-[15%] right-[-4%] rotate-3" delay={1.2}>
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+                        <Music size={20} />
+                    </div>
+                    <div className="text-left">
+                        <p className="text-[9px] font-black uppercase tracking-widest text-slate-400 leading-none mb-1">Nature Tunes</p>
+                        <p className="text-base font-black text-[#1a0a2a]">Deep Focus</p>
+                    </div>
+                </FloatingCard>
+
+                <FloatingCard className="bottom-[20%] right-[-2%] -rotate-2" delay={1.6}>
+                    <div className="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600">
+                        <Wind size={20} />
+                    </div>
+                    <div className="text-left">
+                        <p className="text-[9px] font-black uppercase tracking-widest text-slate-400 leading-none mb-1">Breathing</p>
+                        <p className="text-base font-black text-[#1a0a2a]">Guided Setup</p>
                     </div>
                 </FloatingCard>
             </motion.div>

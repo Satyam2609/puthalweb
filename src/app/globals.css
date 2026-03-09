@@ -68,6 +68,19 @@ img {
 @theme {
   --animate-blob: blob 7s infinite;
   --animate-gradient: textGradient 8s linear infinite;
+  --animate-float: float 4s ease-in-out infinite;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0) rotate(0);
+    }
+
+    50% {
+      transform: translateY(-8px) rotate(2deg);
+    }
+  }
 
   @keyframes blob {
     0% {
@@ -104,4 +117,8 @@ img {
 
 .animate-gradient {
   background-size: 300% 300%;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Download, Smartphone, Heart } from "lucide-react";
 
 const steps = [
@@ -31,6 +31,18 @@ const steps = [
     },
 ];
 
+const smoothReveal: Variants = {
+    hidden: { opacity: 0 },
+    visible: (i: number) => ({
+        opacity: 1,
+        transition: {
+            duration: 0.8,
+            delay: i * 0.1,
+            ease: "easeOut",
+        },
+    }),
+};
+
 const HowItWorks = () => {
     return (
         <section className="py-24 px-6 relative overflow-hidden bg-[#fdfaff]">
@@ -43,18 +55,21 @@ const HowItWorks = () => {
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center mb-20">
                     <motion.span
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        variants={smoothReveal}
+                        initial="hidden"
+                        whileInView="visible"
                         viewport={{ once: true }}
+                        custom={0}
                         className="text-purple-600 font-bold tracking-widest uppercase text-sm mb-4 inline-block"
                     >
                         Process
                     </motion.span>
                     <motion.h2
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        variants={smoothReveal}
+                        initial="hidden"
+                        whileInView="visible"
                         viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
+                        custom={1}
                         className="text-4xl md:text-5xl font-black text-[#1a0a2a] mb-6"
                     >
                         How Our Services Work
@@ -63,28 +78,32 @@ const HowItWorks = () => {
                         initial={{ scaleX: 0 }}
                         whileInView={{ scaleX: 1 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.3, duration: 0.8 }}
+                        transition={{ delay: 0.8, duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
                         className="h-1.5 w-24 bg-gradient-to-r from-purple-500 to-indigo-600 mx-auto rounded-full mb-6"
                     />
                     <motion.p
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        variants={smoothReveal}
+                        initial="hidden"
+                        whileInView="visible"
                         viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
+                        custom={2}
                         className="text-lg text-slate-500 font-medium max-w-2xl mx-auto"
                     >
                         A simple three-step process to start your wellness journey
                     </motion.p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="grid grid-cols-1 md:grid-cols-3 gap-12"
+                >
                     {steps.map((step, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.7, delay: index * 0.2 }}
+                            variants={smoothReveal}
+                            custom={index + 3}
                             className="relative group h-full"
                         >
                             {/* Connector Line for Desktop */}
@@ -92,13 +111,15 @@ const HowItWorks = () => {
                                 <div className="hidden md:block absolute top-24 left-[80%] w-[40%] h-[2px] bg-dashed border-t-2 border-dashed border-purple-200 z-0"></div>
                             )}
 
-                            <div className="bg-white/70 backdrop-blur-xl border border-purple-100 p-10 rounded-[40px] shadow-[0_20px_60px_-15px_rgba(147,51,234,0.06)] hover:shadow-[0_40px_100px_-20px_rgba(147,51,234,0.12)] transition-all duration-500 flex flex-col items-center text-center h-full relative z-10 border-b-[6px] border-b-transparent hover:border-b-purple-500">
+                            <div className="bg-white/70 backdrop-blur-xl border border-purple-100 p-10 rounded-[40px] shadow-[0_10px_30px_-10px_rgba(147,51,234,0.05)] hover:shadow-[0_20px_50px_-15px_rgba(147,51,234,0.08)] transition-all duration-500 flex flex-col items-center text-center h-full relative z-10">
 
                                 <div className="absolute top-6 right-8 text-6xl font-black text-purple-600/5 select-none transition-colors group-hover:text-purple-600/10">
                                     {step.number}
                                 </div>
 
-                                <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${step.gradient} flex items-center justify-center mb-8 shadow-lg shadow-purple-200 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                                <div
+                                    className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${step.gradient} flex items-center justify-center mb-8 shadow-lg shadow-purple-200 transition-all duration-500`}
+                                >
                                     <step.icon className="text-white" size={32} />
                                 </div>
 
@@ -118,7 +139,7 @@ const HowItWorks = () => {
                             </div>
                         </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

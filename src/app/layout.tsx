@@ -3,6 +3,7 @@ import { Poppins, Nunito } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PageTransition from "./components/PageTransition";
+import BackgroundDecor from "./components/BackgroundDecor";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -33,6 +34,7 @@ export default function RootLayout({
         className={`${poppins.variable} ${nunito.variable} antialiased font-body bg-[#fdfaff] min-h-screen text-[#1a0a2a]`}
       >
         <Navbar />
+        <BackgroundDecor />
         <main>
           <PageTransition>{children}</PageTransition>
         </main>

@@ -4,6 +4,20 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Twitter, Instagram, Linkedin, Github, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { Variants } from "framer-motion";
+
+const smoothReveal: Variants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: (i: number) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.8,
+            delay: i * 0.1,
+            ease: "easeOut",
+        },
+    }),
+};
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -43,7 +57,14 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto px-8 md:px-12">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
                     {/* Brand Section */}
-                    <div className="lg:col-span-5 space-y-8">
+                    <motion.div
+                        variants={smoothReveal}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        custom={0}
+                        className="lg:col-span-5 space-y-8"
+                    >
                         <Link href="/" className="inline-block">
                             <h2 className="text-3xl font-black tracking-tighter text-[#1a0a2a]">
                                 Puthal<span className="text-purple-600">Web</span>
@@ -67,10 +88,17 @@ const Footer = () => {
                                 <span className="text-sm font-bold">+91 7724816439</span>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Links Sections */}
-                    <div className="lg:col-span-4 grid grid-cols-2 gap-8">
+                    <motion.div
+                        variants={smoothReveal}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        custom={1}
+                        className="lg:col-span-4 grid grid-cols-2 gap-8"
+                    >
                         {footerLinks.map((section, idx) => (
                             <div key={idx} className="space-y-6">
                                 <h3 className="text-xs font-black uppercase tracking-[0.2em] text-[#1a0a2a]">
@@ -91,10 +119,17 @@ const Footer = () => {
                                 </ul>
                             </div>
                         ))}
-                    </div>
+                    </motion.div>
 
                     {/* Newsletter/Socials Section */}
-                    <div className="lg:col-span-3 space-y-8">
+                    <motion.div
+                        variants={smoothReveal}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        custom={2}
+                        className="lg:col-span-3 space-y-8"
+                    >
                         <div className="space-y-6">
                             <h3 className="text-xs font-black uppercase tracking-[0.2em] text-[#1a0a2a]">
                                 Follow Us
@@ -119,7 +154,7 @@ const Footer = () => {
                                 Join our community and stay updated with the latest in digital wellness.
                             </p>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Bottom Bar */}
