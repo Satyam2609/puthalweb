@@ -17,109 +17,106 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
+        { name: "Home", href: "/" },
         { name: "About", href: "/about" },
-        { name: "Support", href: "#" },
+        { name: "Awareness", href: "/mental-health-awareness" },
         { name: "Services", href: "/services" },
-        { name: "Journal", href: "#" },
-        { name: "Expertise", href: "#" },
         { name: "Contact", href: "/contact" },
     ];
 
     return (
-        <nav
-            className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ease-in-out ${isScrolled
-                ? "py-4 bg-white/70 backdrop-blur-xl border-b border-purple-100/30 shadow-[0_2px_20px_-10px_rgba(168,85,247,0.1)]"
-                : "py-8 bg-transparent"
-                }`}
+        <motion.nav
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className={`fixed top-0 left-0 w-full z-[100] px-4 sm:px-6 md:px-12 ${isScrolled ? "pt-4" : "pt-8"}`}
         >
-            <div className="max-w-7xl mx-auto px-8 md:px-12 flex justify-between items-center">
+            <div
+                className={`mx-auto max-w-7xl flex justify-between items-center transition-all duration-500 px-10 py-3 ${isScrolled
+                    ? "bg-white/90 backdrop-blur-xl border border-purple-100/50 shadow-[0_15px_40px_-15px_rgba(168,85,247,0.12)] rounded-full"
+                    : "bg-white/70 backdrop-blur-lg border border-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-full"
+                    }`}
+            >
                 {/* Logo Section */}
-                <div className="flex items-center gap-4 cursor-pointer group">
-                    <div className="relative">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-purple-200 group-hover:rotate-12 transition-transform duration-500">
-                            <Sparkles size={20} fill="currentColor" />
+                <div className="flex items-center gap-3 cursor-pointer group">
+                    <div
+                        className="relative"
+                    >
+                        <div className="w-full h-10 rounded-full bg-gradient-to-tr from-[#3b82f6] to-[#2563eb] text-white ">
+                            <img src="/logo.png" alt="P" className="w-full h-full object-cover" />
                         </div>
                     </div>
-                    <div className="flex flex-col">
-                       
-                        <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-slate-400 mt-1">Wellness Hub</span>
-                    </div>
                 </div>
 
-                {/* Navigation Items */}
-                <div className="hidden md:flex items-center gap-12">
-                    <div className="flex items-center gap-10">
-                        {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                className="relative text-[13px] font-bold text-slate-500 hover:text-purple-600 transition-all duration-300 group uppercase tracking-widest"
-                            >
-                                {link.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
-                            </a>
-                        ))}
-                    </div>
+                {/* Navigation Items - Centered */}
+                <div className="hidden lg:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
+                    {navLinks.map((link) => (
+                        <a
+                            key={link.name}
+                            href={link.href}
+                            className="relative text-[11px] font-black uppercase tracking-[0.15em] text-[#475569] hover:text-[#581c87] transition-all duration-300 group"
+                        >
+                            {link.name}
+                            <span
+                                className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-purple-600 transition-all duration-300 group-hover:w-1/2"
+                            ></span>
+                        </a>
+                    ))}
+                </div>
 
-                    <button className="relative group px-7 py-3 overflow-hidden rounded-full transition-all duration-500">
-                        <span className="relative z-10 text-xs font-black uppercase tracking-widest text-[#1a0a2a] group-hover:text-white transition-colors duration-300 flex items-center gap-3">
-                            Get Started
-                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                {/* CTA & Mobile Toggle */}
+                <div className="flex items-center gap-6">
+                    <button
+                        className="hidden md:flex relative group px-6 py-2.5 overflow-hidden rounded-full transition-all duration-500 border border-purple-200 bg-purple-50/40 hover:bg-[#581c87] shadow-sm hover:shadow-purple-100"
+                    >
+                        <span className="relative z-10 text-[10px] font-black uppercase tracking-[0.2em] text-[#3b0764] group-hover:text-white transition-colors duration-300 flex items-center gap-2">
+                            GET STARTED
+                            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                         </span>
-                        <div className="absolute inset-0 bg-transparent border-2 border-[#1a0a2a] rounded-full group-hover:bg-[#1a0a2a] transition-all duration-500"></div>
+                    </button>
+
+                    <button
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        className="lg:hidden p-2.5 rounded-full bg-slate-50 text-slate-600 hover:text-purple-600 transition-all border border-slate-100"
+                    >
+                        {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
                     </button>
                 </div>
-
-                {/* Mobile Menu Toggle */}
-                <button
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="md:hidden p-3 rounded-2xl bg-black/5 text-slate-600 hover:text-purple-600 transition-all"
-                >
-                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
             </div>
 
             {/* Mobile Overlay Menu */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, x: "100%" }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: "100%" }}
-                        transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                        className="md:hidden fixed inset-0 z-[110] bg-white p-12 flex flex-col justify-center items-start gap-12"
+                        initial={{ opacity: 0, scale: 0.9, y: -20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.9, y: -20 }}
+                        className="lg:hidden absolute top-24 left-4 right-4 z-[110] bg-white rounded-[2.5rem] p-10 shadow-[0_30px_60px_-15px_rgba(168,85,247,0.25)] border border-purple-50"
                     >
-                        <button
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="absolute top-10 right-10 p-4 bg-slate-50 rounded-full"
-                        >
-                            <X size={32} />
-                        </button>
-
-                        <div className="flex flex-col gap-8">
+                        <div className="flex flex-col gap-6">
                             {navLinks.map((link, idx) => (
                                 <motion.a
-                                    initial={{ opacity: 0, y: 20 }}
+                                    initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: idx * 0.1 }}
+                                    transition={{ delay: idx * 0.05 }}
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="text-5xl font-black text-[#1a0a2a] border-b-4 border-transparent hover:border-purple-600 transition-all uppercase tracking-tighter"
+                                    className="text-3xl font-black text-[#1a0a2a] hover:text-purple-600 transition-all uppercase tracking-tighter py-2 border-b border-slate-50"
                                 >
                                     {link.name}
                                 </motion.a>
                             ))}
                         </div>
 
-                        <button className="w-full py-6 bg-[#1a0a2a] text-white text-xl font-black uppercase tracking-[0.2em] rounded-3xl mt-auto flex justify-center items-center gap-4">
-                            Join Puthal
-                            <ArrowRight size={24} />
+                        <button className="w-full py-5 bg-[#1a0a2a] text-white text-sm font-black uppercase tracking-widest rounded-2xl mt-10 flex justify-center items-center gap-4">
+                            Get Started
+                            <ArrowRight size={20} />
                         </button>
                     </motion.div>
                 )}
             </AnimatePresence>
-        </nav>
+        </motion.nav>
     );
 };
 

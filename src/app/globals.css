@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+html {
+  /* Lenis handles scrolling */
+  scroll-behavior: auto !important;
+}
+
 :root {
   --background: #fdfaff;
   --foreground: #1a0a2a;
@@ -7,10 +12,7 @@
   --accent-pink: #db2777;
   --font-sans: var(--font-poppins);
   --font-body: var(--font-nunito);
-}
-
-html {
-  scroll-behavior: smooth;
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body {

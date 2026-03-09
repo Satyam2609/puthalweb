@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PageTransition from "./components/PageTransition";
 import BackgroundDecor from "./components/BackgroundDecor";
+import SmoothScroll from "./components/SmoothScroll";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -36,7 +37,9 @@ export default function RootLayout({
         <Navbar />
         <BackgroundDecor />
         <main>
-          <PageTransition>{children}</PageTransition>
+          <SmoothScroll>
+            <PageTransition>{children}</PageTransition>
+          </SmoothScroll>
         </main>
         <Footer />
 

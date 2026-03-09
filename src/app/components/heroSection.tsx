@@ -9,9 +9,9 @@ const FloatingCard = ({ children, className, delay = 0 }: { children: React.Reac
         initial={{ opacity: 0, y: 20, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{
-            duration: 1.2,
+            duration: 1.4,
             delay,
-            ease: [0.2, 0.65, 0.3, 0.9]
+            ease: [0.22, 1, 0.36, 1]
         }}
         whileHover={{ y: -8, transition: { duration: 0.3 } }}
         className={`absolute p-5 bg-white/70 backdrop-blur-xl border border-purple-100/50 rounded-2xl shadow-[0_20px_40px_-15px_rgba(168,85,247,0.08)] z-20 hidden lg:flex items-center gap-4 ${className}`}
@@ -35,9 +35,9 @@ const HeroSection = () => {
         visible: (i: number) => ({
             opacity: 1,
             transition: {
-                duration: 0.8,
+                duration: 1.2,
                 delay: 0.1 + i * 0.15,
-                ease: "easeOut",
+                ease: [0.22, 1, 0.36, 1],
             },
         }),
     };
@@ -47,9 +47,9 @@ const HeroSection = () => {
         visible: (i: number) => ({
             opacity: 1,
             transition: {
-                duration: 0.6,
+                duration: 1,
                 delay: 0.4 + i * 0.1,
-                ease: "easeOut",
+                ease: [0.22, 1, 0.36, 1],
             },
         }),
     };
