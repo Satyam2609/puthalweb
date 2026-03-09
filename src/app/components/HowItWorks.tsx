@@ -70,7 +70,7 @@ const HowItWorks = () => {
                         whileInView="visible"
                         viewport={{ once: true }}
                         custom={1}
-                        className="text-4xl md:text-5xl font-black text-[#1a0a2a] mb-6"
+                        className="text-3xl md:text-4xl font-black text-[#1a0a2a] mb-6"
                     >
                         How Our Services Work
                     </motion.h2>
@@ -87,7 +87,7 @@ const HowItWorks = () => {
                         whileInView="visible"
                         viewport={{ once: true }}
                         custom={2}
-                        className="text-lg text-slate-500 font-medium max-w-2xl mx-auto"
+                        className="text-base md:text-lg text-slate-500 font-medium max-w-2xl mx-auto"
                     >
                         A simple three-step process to start your wellness journey
                     </motion.p>
@@ -111,23 +111,23 @@ const HowItWorks = () => {
                                 <div className="hidden md:block absolute top-24 left-[80%] w-[40%] h-[2px] bg-dashed border-t-2 border-dashed border-purple-200 z-0"></div>
                             )}
 
-                            <div className="bg-white/70 backdrop-blur-xl border border-purple-100 p-10 rounded-[40px] shadow-[0_10px_30px_-10px_rgba(147,51,234,0.05)] hover:shadow-[0_20px_50px_-15px_rgba(147,51,234,0.08)] transition-all duration-500 flex flex-col items-center text-center h-full relative z-10">
+                            <div className="bg-white/70 backdrop-blur-xl border border-purple-100 p-8 rounded-[40px] shadow-[0_10px_30px_-10px_rgba(147,51,234,0.05)] hover:shadow-[0_20px_50px_-15px_rgba(147,51,234,0.08)] transition-all duration-500 flex flex-col items-center text-center h-full relative z-10">
 
                                 <div className="absolute top-6 right-8 text-6xl font-black text-purple-600/5 select-none transition-colors group-hover:text-purple-600/10">
                                     {step.number}
                                 </div>
 
                                 <div
-                                    className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${step.gradient} flex items-center justify-center mb-8 shadow-lg shadow-purple-200 transition-all duration-500`}
+                                    className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${step.gradient} flex items-center justify-center mb-8 shadow-lg shadow-purple-100 transition-all duration-500`}
                                 >
-                                    <step.icon className="text-white" size={32} />
+                                    <step.icon className="text-white" size={28} />
                                 </div>
 
-                                <h3 className="text-2xl font-extrabold text-[#1a0a2a] mb-4 group-hover:text-purple-600 transition-colors">
+                                <h3 className="text-xl font-extrabold text-[#1a0a2a] mb-4 group-hover:text-purple-600 transition-colors">
                                     {step.title}
                                 </h3>
 
-                                <p className="text-slate-600 leading-relaxed font-medium mb-6">
+                                <p className="text-slate-600 leading-relaxed font-semibold text-sm mb-6">
                                     {step.description}
                                 </p>
 

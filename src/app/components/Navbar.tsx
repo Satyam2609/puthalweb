@@ -88,30 +88,30 @@ const Navbar = () => {
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9, y: -20 }}
+                        initial={{ opacity: 0, scale: 0.95, y: -10 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9, y: -20 }}
-                        className="lg:hidden absolute top-24 left-4 right-4 z-[110] bg-white rounded-[2.5rem] p-10 shadow-[0_30px_60px_-15px_rgba(168,85,247,0.25)] border border-purple-50"
+                        exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                        className="lg:hidden absolute top-20 left-4 right-4 z-[110] bg-white rounded-[1.8rem] p-8 shadow-[0_20px_50px_-15px_rgba(168,85,247,0.15)] border border-purple-50"
                     >
-                        <div className="flex flex-col gap-6">
+                        <div className="flex flex-col gap-4">
                             {navLinks.map((link, idx) => (
                                 <motion.a
-                                    initial={{ opacity: 0, y: 10 }}
+                                    initial={{ opacity: 0, y: 5 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: idx * 0.05 }}
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="text-3xl font-black text-[#1a0a2a] hover:text-purple-600 transition-all uppercase tracking-tighter py-2 border-b border-slate-50"
+                                    className="text-lg font-extrabold text-[#1a0a2a] hover:text-purple-600 transition-all uppercase tracking-tight py-1.5 border-b border-slate-50 last:border-0"
                                 >
                                     {link.name}
                                 </motion.a>
                             ))}
                         </div>
 
-                        <button className="w-full py-5 bg-[#1a0a2a] text-white text-sm font-black uppercase tracking-widest rounded-2xl mt-10 flex justify-center items-center gap-4">
+                        <button className="w-full py-4 bg-[#1a0a2a] text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-xl mt-6 flex justify-center items-center gap-3">
                             Get Started
-                            <ArrowRight size={20} />
+                            <ArrowRight size={16} />
                         </button>
                     </motion.div>
                 )}

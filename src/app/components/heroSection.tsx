@@ -82,8 +82,8 @@ const HeroSection = () => {
                 </motion.div>
 
                 {/* Hero Typography Section */}
-                <div className="max-w-5xl mx-auto mb-16">
-                    <h1 className="text-7xl md:text-[9.5rem] font-black tracking-[-0.05em] leading-[0.85] text-[#1a0a2a] mb-10 overflow-hidden">
+                <div className="max-w-6xl mx-auto mb-16">
+                    <h1 className="text-5xl md:text-[clamp(4.5rem,9vw,8rem)] font-black tracking-[-0.05em] leading-[0.85] text-[#1a0a2a] mb-10 overflow-hidden">
                         <motion.span
                             variants={scaleReveal}
                             initial="hidden"
@@ -111,7 +111,7 @@ const HeroSection = () => {
                         custom={2}
                         className="max-w-2xl mx-auto"
                     >
-                        <h2 className="text-2xl md:text-3xl font-bold text-slate-400 mb-6 tracking-tight leading-tight">
+                        <h2 className="text-xl md:text-2xl font-bold text-slate-400 mb-6 tracking-tight leading-tight">
                             Mann ki Uthal, <span className="text-purple-600 font-black">Solve on Puthal.</span>
                         </h2>
                         <p className="text-lg md:text-xl text-slate-500 font-medium leading-relaxed">
